@@ -249,7 +249,7 @@ public class Game
 
             if (player.currentsuit.getAitight() == true)
             {
-                System.out.println(languagePack.getText("nomaterial"));
+                System.out.println(languagePack.getText("notbroken"));
                 return;
             }
             else if (player.getItem(material.getDescription()) == null) 

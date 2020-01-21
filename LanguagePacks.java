@@ -101,6 +101,8 @@ public class LanguagePacks
         english.put("nomaterial","I don't have the nessary material in my inventory.");
         english.put("notool","I don't have the nessary tool in my inventory.");
         english.put("cantback","I cant go back any further.");
+        english.put("notbroken","This isnt broken.");
+
 
         //i did in english
         english.put("idrop"," droped");
@@ -196,6 +198,7 @@ public class LanguagePacks
         dutch.put("nomaterial","Ik heb niet het benodigde material in mijn inventaris.");
         dutch.put("notool","Ik heb niet et benodigde gereedschap in mijn inventaris.");
         dutch.put("cantback","Ik kan niet verder terug.");
+        english.put("notbroken","Dit is niet kapot.");
 
         //i did in dutch
         dutch.put("idrop"," latenvallen");
