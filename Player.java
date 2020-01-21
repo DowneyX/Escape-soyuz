@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 
 //this class stores and returns all information about the player
@@ -11,6 +12,7 @@ public class Player
 
     //stores the player his current room
     public Room currentRoom;
+    public ArrayList<Room> roomHistory = new ArrayList<Room>();
 
     //maximum amount of inventory space
     public int inventoryVolume = 6;

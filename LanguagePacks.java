@@ -35,6 +35,7 @@ public class LanguagePacks
         englishCommands.put("inventory",CommandWord.INVENTORY);
         englishCommands.put("map",CommandWord.MAP);
         englishCommands.put("repair", CommandWord.REAPAIR);
+        englishCommands.put("back", CommandWord.BACK);
         
         //english selected
         english.put("TEST", "English selected");
@@ -99,6 +100,7 @@ public class LanguagePacks
         english.put("nospace","I don't have space in my inventory.");
         english.put("nomaterial","I don't have the nessary material in my inventory.");
         english.put("notool","I don't have the nessary tool in my inventory.");
+        english.put("cantback","I cant go back any further.");
 
         //i did in english
         english.put("idrop"," droped");
@@ -130,6 +132,7 @@ public class LanguagePacks
         dutchCommands.put("inventaris",CommandWord.INVENTORY);
         dutchCommands.put("kaart",CommandWord.MAP);
         dutchCommands.put("repareer", CommandWord.REAPAIR);
+        dutchCommands.put("terug", CommandWord.BACK);
         
         //directions in dutch
         dutch.put("exit","uitgangen: ");
@@ -192,6 +195,7 @@ public class LanguagePacks
         dutch.put("nospace","Ik heb geen ruimte in mijn inventaris.");
         dutch.put("nomaterial","Ik heb niet het benodigde material in mijn inventaris.");
         dutch.put("notool","Ik heb niet et benodigde gereedschap in mijn inventaris.");
+        dutch.put("cantback","Ik kan niet verder terug.");
 
         //i did in dutch
         dutch.put("idrop"," latenvallen");

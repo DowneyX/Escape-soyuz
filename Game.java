@@ -74,6 +74,7 @@ public class Game
         player.currentsuit = new Suit(languagePack.getText("broken-suit"),false);
         player.currentsuit.setMaterial(tape);
         player.currentRoom = descendModule;
+        player.roomHistory.add(player.currentRoom);
     }
 
     // prints a map of the game plus where the player is at that moment
@@ -224,6 +225,8 @@ public class Game
         case REAPAIR:
             repair(command);
             break;
+        case BACK:
+            goback();
 
         }
         return wantToQuit;
@@ -257,7 +260,7 @@ public class Game
             else
             {
                 player.currentsuit = new Suit(languagePack.getText("repaired-suit"), true);
-                System.out.println(languagePack.getText("irepair") + secondword);
+                System.out.println(secondword + languagePack.getText("irepair"));
                 return;
             }
         }
@@ -358,7 +361,8 @@ public class Game
     }
 
     // goes to the room with the given direction
-    private void goRoom(Command command) {
+    private void goRoom(Command command) 
+    {
         if (!command.hasSecondWord()) {
             // if there is no second word, we don't know where to go...
             System.out.println(languagePack.getText("gowhere"));
@@ -369,6 +373,7 @@ public class Game
 
         // Try to leave current room.
         Room nextRoom = player.currentRoom.getExit(direction);
+        
 
         if (nextRoom == null) {
             System.out.println(languagePack.getText("cantgo"));
@@ -380,6 +385,23 @@ public class Game
                 System.out.println(languagePack.getText("cause1"));
                 System.exit(0);
             }
+            player.roomHistory.add(player.currentRoom);
+            System.out.println(getLongDescription());
+        }
+    }
+
+    private void goback()
+    {
+        if (player.roomHistory.size() < 2 )
+        {
+            System.out.println(languagePack.getText("cantback"));
+            return;
+        }
+        else
+        {
+            Room previousRoom = player.roomHistory.get(player.roomHistory.size()-2);
+            player.currentRoom = previousRoom;
+            player.roomHistory.remove(player.roomHistory.size()-1);
             System.out.println(getLongDescription());
         }
     }
