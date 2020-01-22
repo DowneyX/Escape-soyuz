@@ -1,32 +1,30 @@
-/**
- * this is the game class
- * this contains the entire game
- *
- * @author Douwe Klip
- * @version 08/01/2020
- */
+//this class is reponsible for the items
+
 public class Item
 {
     //fields
     private String description;
+    private String inspection;
     private int volume;
     
     //constructor
-    public Item(String newDescription, int newVolume)
-    {
+    public Item(String description, int volume, String inspection){
         // initialise instance variables
-        description = newDescription;
-        volume = newVolume;
+        this.description = description;
+        this.volume = volume;
+        this.inspection = inspection;
     }
     
     //methods
-    public String getDescription()
-    {
+    public String getDescription(){
         return description;
     }
     
-    public int getVolume()
-    {
+    public int getVolume(){
         return volume;
+    }
+
+    public String getInspection(){
+        return inspection;
     }
 }

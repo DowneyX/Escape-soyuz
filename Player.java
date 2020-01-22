@@ -6,18 +6,10 @@ import java.util.HashMap;
 public class Player
 {
     public Suit currentsuit = null;
-
-    //stored items in inventory
     public HashMap<String,Item> inventory = new HashMap<String,Item>();
-
-    //stores the player his current room
     public Room currentRoom;
     public ArrayList<Room> roomHistory = new ArrayList<Room>();
-
-    //maximum amount of inventory space
     public int inventoryVolume = 6;
-
-    // returns the total amount of space being taken up in the player his inventory
     public int getInventoryVolume()
     {
         int totalvolume = 0;

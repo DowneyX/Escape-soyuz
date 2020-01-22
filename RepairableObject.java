@@ -1,45 +1,37 @@
-/**
- * RepairableObjects
- */
+// this class is responsible for repairable objects
+
 public class RepairableObject {
 
     private String description;
     private Item material;
     private Item tool;
+    private String inspection;
 
-    public RepairableObject (String description, Item material, Item tool )
+    public RepairableObject (String description, Item material, Item tool, String inspection )
     {
         this.description = description;
         this.material = material;
         this.tool = tool;
+        this.inspection = inspection;
     }
 
-    /**
-     * @param material the material to set
-     */
-    public void setMaterial(Item material) 
-    {
+    public String getInspection(){
+        return inspection;
+    }
+
+    public void setMaterial(Item material){
         this.material = material;
     }
 
-    /**
-     * @param tool the tool to set
-     */
-    public void setTool(Item tool) 
-    {
+    public void setTool(Item tool){
         this.tool = tool;
     }
 
-    /**
-     * @return the description
-     */
-    public String getDescription() 
-    {
+    public String getDescription(){
         return description;
     }
 
-    public Item getMaterial()
-    {
+    public Item getMaterial(){
         return material;
     }
 
