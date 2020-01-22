@@ -7,8 +7,7 @@ public class Game
     private Parser parser;
     private Player player;
     private LanguagePacks lang;
-    Room descendModule, orbitalModule, outsideOrbitalModule, outsideDescendModuleWest, outsideDescendModuleEast,
-            serviceModuleWest, serviceModuleEast;
+    Room descendModule, orbitalModule, outsideOrbitalModule, outsideDescendModuleWest, outsideDescendModuleEast, serviceModuleWest, serviceModuleEast;
     Scanner reader = new Scanner(System.in);
 
     // initialises the players the parser and languagepack
@@ -16,6 +15,46 @@ public class Game
         parser = new Parser();
         player = new Player();
         lang = new LanguagePacks();
+    }
+
+    // starts the game.
+    public void play() {
+        selectLanguage();
+        createRooms();
+        printWelcome();
+
+        // Enter the main command loop. Here we repeatedly read commands and
+        // execute them until the game is over.
+        boolean finished = false;
+        while (!finished) {
+            Command command = parser.getCommand();
+            finished = processCommand(command);
+        }
+
+        // prints goodbye message
+        System.out.println(lang.getText("quitgame"));
+    }
+
+    // selects a language depending on what language you selected
+    private void selectLanguage() {
+         System.out.println("please select a language");
+        System.out.println("selecteer een taal A.u.b");
+
+        String selectedLanguage = reader.nextLine().toLowerCase();
+    
+        switch (selectedLanguage) {
+        case "nederlands":
+            LanguagePacks.setlanguage(Language.DUTCH);
+            break;
+
+        case "english":
+            LanguagePacks.setlanguage(Language.ENGLISH);
+            break;
+    
+        default:
+            selectLanguage();
+    
+        }
     }
 
     // creates all the rooms and item and links the exits together and sets items to
@@ -75,116 +114,9 @@ public class Game
         player.currentsuit.setMaterial(tape);
         player.currentRoom = descendModule;
         player.roomHistory.add(player.currentRoom);
-    }
+    }  
 
-    // prints a map of the game plus where the player is at that moment
-    private void printMap() {
-        String noPlayer = "     ";
-        String playerHere = " <○> ";
-
-        String dcm = noPlayer;
-        String omm = noPlayer;
-        String oom = noPlayer;
-        String odw = noPlayer;
-        String ode = noPlayer;
-        String smw = noPlayer;
-        String sme = noPlayer;
-
-        if (player.currentRoom == descendModule) {
-            dcm = playerHere;
-        }
-        if (player.currentRoom == orbitalModule) {
-            omm = playerHere;
-        }
-        if (player.currentRoom == outsideOrbitalModule) {
-            oom = playerHere;
-        }
-        if (player.currentRoom == outsideDescendModuleWest) {
-            odw = playerHere;
-        }
-        if (player.currentRoom == outsideDescendModuleEast) {
-            ode = playerHere;
-        }
-        if (player.currentRoom == serviceModuleWest) {
-            smw = playerHere;
-        }
-        if (player.currentRoom == serviceModuleEast) {
-            sme = playerHere;
-        }
-        System.out.println();
-        System.out.println(lang.getText("iAmAt")+playerHere);
-        System.out.println();
-        System.out.println("                  "+oom+"          N");
-        System.out.println("                  :-^-:        W ○ O ");
-        System.out.println("                 /     \\         Z");
-        System.out.println("                0 "+omm+" 0");
-        System.out.println("                 \\     /");
-        System.out.println("                  :-^-:");
-        System.out.println("                 /     \\");
-        System.out.println("          "+odw+" 0 "+dcm+" 0 "+ode);
-        System.out.println("                |_______|");
-        System.out.println(" ______________ :/_\\_/_\\: _______________");
-        System.out.println("|=|=|=|=|=|=|:A-|':|||:'|-A:|=|=|=|=|=|=|");
-        System.out.println("^\"\"\"\"\"\"\"\"\"\"\"\"\"\" !::{o}::! \"\"\"\"\"\"\"\"\"\"\"\"\"\"^");
-        System.out.println("             "+smw+"   "+sme);
-    }
-
-    // starts the game.
-    public void play() {
-        selectLanguage();
-        createRooms();
-        printWelcome();
-
-        // Enter the main command loop. Here we repeatedly read commands and
-        // execute them until the game is over.
-        boolean finished = false;
-        while (!finished) {
-            Command command = parser.getCommand();
-            finished = processCommand(command);
-        }
-
-        // prints goodbye message
-        System.out.println(lang.getText("quitgame"));
-    }
-
-    // selects a language depending on what language you selected
-    private void selectLanguage() {
-        System.out.println("please select a language");
-        System.out.println("selecteer een taal A.u.b");
-
-        String selectedLanguage = reader.nextLine().toLowerCase();
-
-        switch (selectedLanguage) {
-        case "nederlands":
-            LanguagePacks.setlanguage(Language.DUTCH);
-            break;
-
-        case "english":
-            LanguagePacks.setlanguage(Language.ENGLISH);
-            break;
-
-        default:
-            selectLanguage();
-
-        }
-    }
-
-    // prints a opening message for the player
-    private void printWelcome() {
-        System.out.println(lang.getText("TEST"));
-        System.out.println();
-        System.out.println(lang.getText("welcome1"));
-        System.out.println(lang.getText("welcome2"));
-        System.out.println(lang.getText("welcome3"));
-        System.out.println(lang.getText("welcome4"));
-        System.out.println(lang.getText("welcome5"));
-        System.out.println(lang.getText("welcome6"));
-        System.out.println(lang.getText("welcome7"));
-        System.out.println();
-        System.out.println(getLongDescription());
-    }
-
-    // prosseses a given command
+    //prosseses a given command
     private boolean processCommand(Command command) {
         boolean wantToQuit = false;
 
@@ -238,6 +170,75 @@ public class Game
         return wantToQuit;
     }
 
+    //prints a map of the game plus where the player is at that moment
+    private void printMap() {
+        String noPlayer = "     ";
+        String playerHere = " <○> ";
+
+        String dcm = noPlayer;
+        String omm = noPlayer;
+        String oom = noPlayer;
+        String odw = noPlayer;
+        String ode = noPlayer;
+        String smw = noPlayer;
+        String sme = noPlayer;
+
+        if (player.currentRoom == descendModule) {
+            dcm = playerHere;
+        }
+        if (player.currentRoom == orbitalModule) {
+            omm = playerHere;
+        }
+        if (player.currentRoom == outsideOrbitalModule) {
+            oom = playerHere;
+        }
+        if (player.currentRoom == outsideDescendModuleWest) {
+            odw = playerHere;
+        }
+        if (player.currentRoom == outsideDescendModuleEast) {
+            ode = playerHere;
+        }
+        if (player.currentRoom == serviceModuleWest) {
+            smw = playerHere;
+        }
+        if (player.currentRoom == serviceModuleEast) {
+            sme = playerHere;
+        }
+        System.out.println();
+        System.out.println(lang.getText("iAmAt")+playerHere);
+        System.out.println();
+        System.out.println("                  "+oom+"          N");
+        System.out.println("                  :-^-:        W ○ O ");
+        System.out.println("                 /     \\         Z");
+        System.out.println("                0 "+omm+" 0");
+        System.out.println("                 \\     /");
+        System.out.println("                  :-^-:");
+        System.out.println("                 /     \\");
+        System.out.println("          "+odw+" 0 "+dcm+" 0 "+ode);
+        System.out.println("                |_______|");
+        System.out.println(" ______________ :/_\\_/_\\: _______________");
+        System.out.println("|=|=|=|=|=|=|:A-|':|||:'|-A:|=|=|=|=|=|=|");
+        System.out.println("^\"\"\"\"\"\"\"\"\"\"\"\"\"\" !::{o}::! \"\"\"\"\"\"\"\"\"\"\"\"\"\"^");
+        System.out.println("             "+smw+"   "+sme);
+    }
+
+    //prints a opening message for the player
+    private void printWelcome() {
+        System.out.println(lang.getText("TEST"));
+        System.out.println();
+        System.out.println(lang.getText("welcome1"));
+        System.out.println(lang.getText("welcome2"));
+        System.out.println(lang.getText("welcome3"));
+        System.out.println(lang.getText("welcome4"));
+        System.out.println(lang.getText("welcome5"));
+        System.out.println(lang.getText("welcome6"));
+        System.out.println(lang.getText("welcome7"));
+        System.out.println();
+        System.out.println(lang.getText("iAmAt") + player.currentRoom.getShortDescription());
+        System.out.println(lang.getText("exit") + player.currentRoom.getExitString());
+    }
+
+    //inspect
     public void inspect(Command command){
         if (!command.hasSecondWord()) {
             // if there is no second word, we don't know what to inspect
@@ -283,6 +284,7 @@ public class Game
         }
     }
 
+    //repairs repairables
     public void repair(Command command) {
         if (!command.hasSecondWord()) {
             // if there is no second word, we don't know what to rapiar
@@ -378,6 +380,7 @@ public class Game
         }
     }
 
+    //takes a given item
     private void takeItem(Command command) {
         if (!command.hasSecondWord()) {
             // if there is no second word, we don't know what to take.
@@ -406,7 +409,7 @@ public class Game
         }
     }
 
-    // goes to the room with the given direction
+    //player goes to the room with the given direction
     private void goRoom(Command command) 
     {
         if (!command.hasSecondWord()) {
@@ -432,10 +435,12 @@ public class Game
                 System.exit(0);
             }
             player.roomHistory.add(player.currentRoom);
-            System.out.println(getLongDescription());
+            System.out.println(lang.getText("iAmAt") + player.currentRoom.getShortDescription());
+            System.out.println(lang.getText("exit") + player.currentRoom.getExitString());
         }
     }
 
+    //player goes back from where they came
     private void goback()
     {
         if (player.roomHistory.size() < 2 )
@@ -448,14 +453,9 @@ public class Game
             Room previousRoom = player.roomHistory.get(player.roomHistory.size()-2);
             player.currentRoom = previousRoom;
             player.roomHistory.remove(player.roomHistory.size()-1);
-            System.out.println(getLongDescription());
+            System.out.println(lang.getText("iAmAt") + player.currentRoom.getShortDescription());
+            System.out.println(lang.getText("exit") + player.currentRoom.getExitString());
         }
-    }
-
-    // returns a long description with information about the rooms exits
-    public String getLongDescription() {
-        return lang.getText("iAmAt") + player.currentRoom.getShortDescription() + ".\n"
-                + lang.getText("exit") + player.currentRoom.getExitString();
     }
 
     // checks if you want to quit the game and then quits the game

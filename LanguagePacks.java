@@ -132,7 +132,7 @@ public class LanguagePacks
         english.put("spaceLeft", "Space left in my inventory: ");
         english.put("space", "space: ");
         english.put("oxygen", "oxygen: ");
-        english.put("repairable", "to repair: ");
+        english.put("repairables", "to repair: ");
         english.put("items", "items: ");
         
         //death in english
@@ -256,11 +256,11 @@ public class LanguagePacks
         dutch.put("iAmAt", "Ik bevind mij bij: ");
         dutch.put("iWear","Ik heb aan: ");
 
-        //stateting in dutch
+        //stating in dutch
         dutch.put("spaceLeft", "Ruimte over in mijn inventaris: ");
         dutch.put("space", "Ruimte: ");
         dutch.put("oxygen", "Zuurstof: ");
-        dutch.put("repairable", "Te repareren: ");
+        dutch.put("repairables", "Te repareren: ");
         dutch.put("items", "Voorwerpen: ");
 
         //death in dutch
