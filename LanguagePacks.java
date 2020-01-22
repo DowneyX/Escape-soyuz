@@ -84,7 +84,7 @@ public class LanguagePacks
         english.put("outsideDescendModuleEastInspection", "It looks beautifull outside.");
         english.put("serviceModuleWestInspection", "It looks beautifull outside.");
         english.put("serviceModuleEastInspection", "It looks beautifull outside.");
-        english.put("myselfInspection", "i seem to be fine appart from my amnesia.");
+        english.put("myselfInspection", "I seem to be fine appart from my amnesia.");
 
         
         //welcome in english
@@ -127,7 +127,13 @@ public class LanguagePacks
         english.put("iAmAt", "I am at: ");
         english.put("iRepair", " repaired");
         english.put("iWear","I'm wearing: ");
+
+        //stating in english
         english.put("spaceLeft", "Space left in my inventory: ");
+        english.put("space", "space: ");
+        english.put("oxygen", "oxygen: ");
+        english.put("repairable", "to repair: ");
+        english.put("items", "items: ");
         
         //death in english
         english.put("death", "You died");
@@ -227,7 +233,7 @@ public class LanguagePacks
 
         //do what / gowhere in dutch
         dutch.put("dropWhat", "Laat wat vallen?");
-        dutch.put("takeWhat", "pak wat?");
+        dutch.put("takeWhat", "Pak wat?");
         dutch.put("goWhere", "Gaa waarheen?");
         dutch.put("quitWhat", "Verlaat wat?");
         dutch.put("repairWhat", "Repareer wat?");
@@ -246,14 +252,20 @@ public class LanguagePacks
         dutch.put("iDrop", " latenvallen");
         dutch.put("iTake", " opgepakt");
         dutch.put("iRepair", " gerepareerd");
-        dutch.put("iCarry", "ik draag bij mij: ");
-        dutch.put("iAmAt", "ik bevind mij bij: ");
-        dutch.put("iWear","ik heb aan: ");
-        dutch.put("spaceLeft", "ruimte over in mijn inventaris: ");
+        dutch.put("iCarry", "Ik draag bij mij: ");
+        dutch.put("iAmAt", "Ik bevind mij bij: ");
+        dutch.put("iWear","Ik heb aan: ");
+
+        //stateting in dutch
+        dutch.put("spaceLeft", "Ruimte over in mijn inventaris: ");
+        dutch.put("space", "Ruimte: ");
+        dutch.put("oxygen", "Zuurstof: ");
+        dutch.put("repairable", "Te repareren: ");
+        dutch.put("items", "Voorwerpen: ");
 
         //death in dutch
-        dutch.put("death", "je bent dood gegaan.");
-        dutch.put("cause1",  "je probeerde naar buiten te gaan met een gat in je pak.");
+        dutch.put("death", "Je bent dood gegaan.");
+        dutch.put("cause1",  "Je probeerde naar buiten te gaan met een gat in je pak.");
  
         //quit in dutch
         dutch.put("quitGame", "Dank u wel voor het spelen,  vaarwel ^.^");

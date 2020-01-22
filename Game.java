@@ -255,9 +255,9 @@ public class Game
         if (secondWord.equals(currentRoom.getShortDescription())){
             System.out.println(lang.getText("iAmAt") + currentRoom.getShortDescription());
             System.out.println(currentRoom.getInpection());
-            System.out.println("items: "+ currentRoom.getRoomItems());
-            System.out.println("repairables: " + currentRoom.getRoomRepairableObjects());
-            System.out.println("oxygen:" + currentRoom.getOxygen());
+            System.out.println(lang.getText("items")+ currentRoom.getRoomItems());
+            System.out.println(lang.getText("repairables") + currentRoom.getRoomRepairableObjects());
+            System.out.println(lang.getText("oxygen") + currentRoom.getOxygen());
 
             return;
         }
@@ -267,7 +267,7 @@ public class Game
         }
         if(item != null){
             System.out.println(item.getInspection());
-            System.out.println("volume: ["+item.getVolume()+"]");
+            System.out.println(lang.getText("space") + "["+item.getVolume()+"]");
             return;
         }
         if(secondWord.equals(lang.getText("myself"))){
