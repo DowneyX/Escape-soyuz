@@ -9,7 +9,6 @@ public class Item
     
     //constructor
     public Item(String description, int volume, String inspection){
-        // initialise instance variables
         this.description = description;
         this.volume = volume;
         this.inspection = inspection;

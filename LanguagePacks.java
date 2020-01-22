@@ -126,6 +126,8 @@ public class LanguagePacks
         english.put("iCarry", "I am carrying: ");
         english.put("iAmAt", "I am at: ");
         english.put("iRepair", " repaired");
+        english.put("iWear","I'm wearing: ");
+        english.put("spaceLeft", "Space left in my inventory: ");
         
         //death in english
         english.put("death", "You died");
@@ -137,8 +139,7 @@ public class LanguagePacks
         //unknown in english
         english.put("unknownCommand", "I dont know what you mean...");
         
- 
-        
+
         //dutch
         dutch.put("TEST",  "Nederlands geselecteerd.");
 
@@ -230,7 +231,7 @@ public class LanguagePacks
         dutch.put("goWhere", "Gaa waarheen?");
         dutch.put("quitWhat", "Verlaat wat?");
         dutch.put("repairWhat", "Repareer wat?");
-        english.put("inspectWhat",  "Inspecteer wat?");
+        dutch.put("inspectWhat",  "Inspecteer wat?");
         
         //cant do / cant go in dutch
         dutch.put("cantFind", "Ik kan dat niet vinden.");
@@ -245,8 +246,10 @@ public class LanguagePacks
         dutch.put("iDrop", " latenvallen");
         dutch.put("iTake", " opgepakt");
         dutch.put("iRepair", " gerepareerd");
-        dutch.put("iCarry", "ik draag: ");
+        dutch.put("iCarry", "ik draag bij mij: ");
         dutch.put("iAmAt", "ik bevind mij bij: ");
+        dutch.put("iWear","ik heb aan: ");
+        dutch.put("spaceLeft", "ruimte over in mijn inventaris: ");
 
         //death in dutch
         dutch.put("death", "je bent dood gegaan.");

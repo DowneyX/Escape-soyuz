@@ -2,11 +2,13 @@
 
 public class Suit 
 {
+    //fields
     private String description;
     private boolean airtight;
     private Item material = null;
     private String inspection;
 
+    //constructor
     public Suit(String description, boolean airtight, String inspection)
     {
         this.description = description;
@@ -14,6 +16,7 @@ public class Suit
         this.inspection = inspection;
     }
 
+    //methods
     public String getInspection(){
         return inspection;
     }

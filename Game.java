@@ -340,13 +340,11 @@ public class Game
 
     // prints all the items that are in the players inventory
     private void printInventory() {
-        String output = "";
-        for (String key : player.inventory.keySet()) {
-            output += player.inventory.get(key).getDescription() + ", ";
-        }
+        System.out.println(lang.getText("iWear")+player.currentsuit.getDescription());
         System.out.println(lang.getText("iCarry"));
-        System.out.println(output);
-        
+        System.out.println(player.GetInventoryItems());
+        System.out.println(lang.getText("spaceLeft")+"[" + (player.inventoryVolume - player.getInventoryVolume())+"]");
+
     }
 
     // gives a help message with all the commandwords
