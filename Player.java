@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 public class Player
 {
+    public int Suitoxygen = 7;
     public Suit currentsuit = null;
     public HashMap<String,Item> inventory = new HashMap<String,Item>();
     public Room currentRoom;

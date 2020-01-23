@@ -30,6 +30,7 @@ public class LanguagePacks
         englishCommands.put("repair",  CommandWord.REAPAIR);
         englishCommands.put("back",  CommandWord.BACK);
         englishCommands.put("inspect",  CommandWord.INSPECT);
+        englishCommands.put("use",  CommandWord.USE);
 
         //directions in english
         english.put("exit", "exits: ");
@@ -45,15 +46,19 @@ public class LanguagePacks
         //roomdescriptions in english
         english.put("descendModule", "descend-module");
         english.put("orbitalModule", "orbital-module");
-        english.put("outsideOrbitalModule", "orbital-module");
-        english.put("outsideDescendModuleWest", "outside-decent-module-east");
-        english.put("outsideDescendModuleEast", "outside-decent-module-west");
-        english.put("serviceModuleWest", "sevice-module");
-        english.put("serviceModuleEast", "service-Module-East");
+        english.put("outsideOrbitalModule", "outside-orbital-module");
+        english.put("outsideDescendModuleWest", "descent-module-west");
+        english.put("outsideDescendModuleEast", "descent-module-east");
+        english.put("serviceModuleWest", "service-module-west");
+        english.put("serviceModuleEast", "service-module-east");
         
         //items/objects in english
         english.put("leak", "leak");
-        english.put("navigationComputer", "navigation-computer");
+        english.put("yuri", "yuri");
+        english.put("viktor", "viktor");
+        english.put("brokenNavigationComputer", "broken-navigation-computer");
+        english.put("repairedNavigationComputer", "repaired-navigation-computer");
+        english.put("repairedSolarpanel", "repaired-solarpanel");
         english.put("brokenSuit", "broken-suit");
         english.put("repairedSuit", "repaired-suit");
         english.put("welder", "welder");
@@ -66,8 +71,12 @@ public class LanguagePacks
         english.put("myself", "myself");
 
         //inspections in english
+        english.put("repairedSolarpanelInspection", "we should have power now");
+        english.put("repairedNavigationComputerInspection", "this should work now.");
+        english.put("yuriInspection", "Yuri is dead, maybe i could take his suit");
+        english.put("viktorInspection", "viktor is dead, maybe i could take his suit");
         english.put("leakInspection", "Doesn't look like oxygen is leaking though, \n I could probably fix it with some welding materials.");
-        english.put("navigationComputerInspection", "If I had a screwdriver and some cables i could fix this.");
+        english.put("brokenNavigationComputerInspection", "If I had a screwdriver and some cables i could fix this.");
         english.put("brokenSuitInspection", "I could probably repair this if i had some tape.");
         english.put("repairedSuitInspection", "Thats some fine craftman ship.");
         english.put("welderInspection", "I could weld with this if i had some welding rods.");
@@ -86,15 +95,8 @@ public class LanguagePacks
         english.put("serviceModuleEastInspection", "It looks beautifull outside.");
         english.put("myselfInspection", "I seem to be fine appart from my amnesia.");
 
-        
         //welcome in english
-        english.put("welcome1", "You wake up in a soyuz spacecraft.");
-        english.put("welcome2", "You don't remember anything.");
-        english.put("welcome3", "The entire spacecraft is out of power.");
-        english.put("welcome4", "It looks like the 2 people inside of the spacecraft are dead.");
-        english.put("welcome5", "You should inspect youself to check if you are okay.");
-        english.put("welcome6", "Try and get the spacecraft operational again and return home.");
-        english.put("welcome7", "Type 'help' if you need help.");
+        english.put("welcome", "You wake up in a soyuz spacecraft.\nYou don't remember anything.\nThe entire spacecraft is out of power.\nIt looks like the 2 people inside of the spacecraft are dead.\nYou should inspect youself to check if you are okay.\nTry and get the spacecraft operational again and return home.\nType 'help' if you need help.");
         
         //help in english
         english.put("help1", "You have amnesia and you are in a soyuz spacecraft.");
@@ -109,6 +111,7 @@ public class LanguagePacks
         english.put("quitWhat", "Quit what?");
         english.put("repairWhat", "Repair what?");
         english.put("inspectWhat",  "Inspect what?");
+        english.put("useWhat", "Use What?");
         
         //cant do / cant go in english
         english.put("cantFind", "I cant find that.");
@@ -118,7 +121,7 @@ public class LanguagePacks
         english.put("noTool", "I don't have the nessary tool in my inventory.");
         english.put("cantGoBack", "I cant go back any further.");
         english.put("notBroken", "This isnt broken.");
-
+        english.put("noElectricity", "mmh doesn't look like there is any electricity");
 
         //i did in english
         english.put("iDrop", " droped");
@@ -134,11 +137,14 @@ public class LanguagePacks
         english.put("oxygen", "oxygen: ");
         english.put("repairables", "to repair: ");
         english.put("items", "items: ");
+        english.put("objects", "objects: ");
         
-        //death in english
-        english.put("death", "You died");
-        english.put("cause1", "You treid to go outside while you had a puncture in your suit.");
-        
+        //lose/win in english
+        english.put("deathCause1", "You died.\nYou treid to go outside while you had a puncture in your suit.");
+        english.put("deathCause2", "You died.\nYou ran out of oxygen.");
+        english.put("deathCause3", "You died.\nyou treid to return home but you burned up on re-entry \n You must have forgoten to repair something critical.");
+        english.put("youWin", "You safely returned home");
+
         //quit in english
         english.put("quitGame", "Thank you for playing goodbye ^.^");
         
@@ -160,6 +166,7 @@ public class LanguagePacks
         dutchCommands.put("repareer",  CommandWord.REAPAIR);
         dutchCommands.put("terug",  CommandWord.BACK);
         dutchCommands.put("inspecteer",  CommandWord.INSPECT);
+        dutchCommands.put("gebruik",  CommandWord.USE);
         
         //directions in dutch
         dutch.put("exit", "uitgangen: ");
@@ -176,14 +183,18 @@ public class LanguagePacks
         dutch.put("descendModule", "terugkeermodule");
         dutch.put("orbitalModule", "ruimtemodule");
         dutch.put("outsideOrbitalModule", "ruimtemodule-buiten");
-        dutch.put("outsideDescendModuleWest", "terugkeermodule-buiten-west");
-        dutch.put("outsideDescendModuleEast", "terugkeermodule-buiten-oost");
-        dutch.put("serviceModuleWest", "instrumentenmodule-buiten-west");
-        dutch.put("serviceModuleEast", "instrumentenmodule-buiten-oost");
+        dutch.put("outsideDescendModuleWest", "terugkeermodule-west");
+        dutch.put("outsideDescendModuleEast", "terugkeermodule-oost");
+        dutch.put("serviceModuleWest", "instrumentenmodule-west");
+        dutch.put("serviceModuleEast", "instrumentenmodule-oost");
 
         //items/objects in dutch
+        dutch.put("yuri", "yuri");
+        dutch.put("viktor", "viktor");
+        dutch.put("repairedNavigationComputer", "gerepareerd-navigatie-computer");
+        dutch.put("repairedSolarpanel", "gerepareerd-zonnenpanel");
         dutch.put("leak", "lek");
-        dutch.put("navigationComputer", "navigatie-computer");
+        dutch.put("brokenNavigationComputer", "kapot-navigatie-computer");
         dutch.put("brokenSuit",  "kapot-pak");
         dutch.put("repairedSuit",  "gerepareerd-pak");
         dutch.put("welder", "lasser");
@@ -195,9 +206,13 @@ public class LanguagePacks
         dutch.put("brokenSolarpanel", "kapot-zonnenpaneel");
         dutch.put("myself", "mijzelf");
 
-        //inspections in english
+        //inspections in dutch
+        dutch.put("repairedSolarpanelInspection", "Ik zou nu stroom moeten hebben");
+        dutch.put("repairedNavigationComputerInspection", "Dit zou moeten werken");
+        dutch.put("yuriInspection", "Yuri is dood, mischien kan ik zijn pak gebruiken");
+        dutch.put("viktorInspection", "viktor is dood, mischien kan ik zijn pak gebruiken");
         dutch.put("leakInspection", "lijkt er niet op dat er zuurstof ontsnapt,\n Ik zou dit kunnen maken als ik een lasser en lasstafen had.");
-        dutch.put("navigationComputerInspection", "Als Ik een schroevendraaier en cabels had kan ik dit repareren.");
+        dutch.put("brokenNavigationComputerInspection", "Als Ik een schroevendraaier en cabels had kan ik dit repareren.");
         dutch.put("brokenSuitInspection", "Ik zou dit kunnen repareren als ik tape had.");
         dutch.put("repairedSuitInspection", "Dat is nou vakmanschap.");
         dutch.put("welderInspection", "Ik kan hier mee lassen al ik lassatafen had.");
@@ -217,13 +232,7 @@ public class LanguagePacks
         dutch.put("myselfInspection", "alles is goed op mijn geheugenverlies naa.");
           
         //welcome in dutch
-        dutch.put("welcome1", "Je word wakker in een soyus ruimte voertuig.");
-        dutch.put("welcome2", "Je herrinert je niks meer.");
-        dutch.put("welcome3", "Het helevoertuig heeft geen stroom meer.");
-        dutch.put("welcome4", "het lijkt er op dat de 2 mensen in het voertuig dood zijn.");
-        dutch.put("welcome5", "Inspecteer jezelf om te kijken of alles goed is.");
-        dutch.put("welcome6", "Probeer het voetuig werkent te krijgen en ga terug naar huis.");
-        dutch.put("welcome7", "Tiep 'hulp' als je hulp nodig hept.");
+        dutch.put("welcome", "Je word wakker in een soyus ruimte voertuig.\nJe herrinert je niks meer.\n Het helevoertuig heeft geen stroom meer.\nhet lijkt er op dat de 2 mensen in het voertuig dood zijn.\nInspecteer jezelf om te kijken of alles goed is.\nProbeer het voetuig werkent te krijgen en ga terug naar huis.\nTiep 'hulp' als je hulp nodig hept.");
         
         //help in dutch
         dutch.put("help1", "Je hebt geheugenverlies en je bent in een soyuz ruimtevoertuig.");
@@ -238,6 +247,7 @@ public class LanguagePacks
         dutch.put("quitWhat", "Verlaat wat?");
         dutch.put("repairWhat", "Repareer wat?");
         dutch.put("inspectWhat",  "Inspecteer wat?");
+        english.put("useWhat", "gebruik Wat?");
         
         //cant do / cant go in dutch
         dutch.put("cantFind", "Ik kan dat niet vinden.");
@@ -247,6 +257,7 @@ public class LanguagePacks
         dutch.put("noTool", "Ik heb niet et benodigde gereedschap in mijn inventaris.");
         dutch.put("cantGoBack", "Ik kan niet verder terug.");
         dutch.put("notBroken", "Dit is niet kapot.");
+        english.put("noElectricity", "mmh lijkt er op dat er geen stroom is.");
 
         //i did in dutch
         dutch.put("iDrop", " latenvallen");
@@ -262,11 +273,14 @@ public class LanguagePacks
         dutch.put("oxygen", "Zuurstof: ");
         dutch.put("repairables", "Te repareren: ");
         dutch.put("items", "Voorwerpen: ");
+        english.put("objects", "objecten: ");
 
-        //death in dutch
-        dutch.put("death", "Je bent dood gegaan.");
-        dutch.put("cause1",  "Je probeerde naar buiten te gaan met een gat in je pak.");
- 
+        //lose/win in dutch
+        dutch.put("deathCause1", "je bent dood,\nje probeerde naar buiten te gaan terwel je een gat in je pak had.");
+        dutch.put("deathCause2", "je bent dood, \nje had geen zuurstof meer");
+        dutch.put("deathCause3", "je bent dood, \nJe probeerde terug te keren maar je was opgebrand tijdens de terugkering \n Je bent vergeten iets belangerijks te repareren.");
+        dutch.put("youWin", "je bent veilig terug gekeerd naar huis.");
+
         //quit in dutch
         dutch.put("quitGame", "Dank u wel voor het spelen,  vaarwel ^.^");
 

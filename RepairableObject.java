@@ -6,6 +6,7 @@ public class RepairableObject {
     private Item material;
     private Item tool;
     private String inspection;
+    private Object replaceObject;
 
     public RepairableObject (String description, Item material, Item tool, String inspection )
     {
@@ -13,6 +14,14 @@ public class RepairableObject {
         this.material = material;
         this.tool = tool;
         this.inspection = inspection;
+    }
+
+    public void setReplaceObject( Object object){
+        this.replaceObject = object;
+    }
+
+    public Object getReplaceObject(){
+        return replaceObject;
     }
 
     public String getInspection(){

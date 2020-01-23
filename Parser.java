@@ -29,11 +29,10 @@ public class Parser
         String inputLine;   // will hold the full input line
         String word1 = null;
         String word2 = null;
-        
+        System.out.println("-----------------------------------------------------------------------------------------------");
         System.out.print("> ");     // print prompt
-        
         inputLine = reader.nextLine();
-        
+        System.out.println("-----------------------------------------------------------------------------------------------");
         // Find up to two words on the line.
         Scanner tokenizer = new Scanner(inputLine);
         if(tokenizer.hasNext()) {
@@ -43,7 +42,7 @@ public class Parser
                 // note: we just ignore the rest of the input line.
             }
         }
-
+        
         return new Command(commands.getCommandWord(word1), word2);
     }
 
