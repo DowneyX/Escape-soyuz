@@ -1,29 +1,28 @@
 //this class is reponsible for the items
 
-public class Item
-{
-    //fields
+public class Item {
+    // fields
     private String description;
     private String inspection;
     private int volume;
-    
-    //constructor
-    public Item(String description, int volume, String inspection){
+
+    // constructor
+    public Item(String description, int volume, String inspection) {
         this.description = description;
         this.volume = volume;
         this.inspection = inspection;
     }
-    
-    //methods
-    public String getDescription(){
+
+    // methods
+    public String getDescription() {
         return description;
     }
-    
-    public int getVolume(){
+
+    public int getVolume() {
         return volume;
     }
 
-    public String getInspection(){
+    public String getInspection() {
         return inspection;
     }
 }

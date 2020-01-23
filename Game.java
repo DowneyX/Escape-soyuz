@@ -90,14 +90,14 @@ public class Game
 
         // variables of all the items
         Item welder = new Item(text("welder"), 3, text("welderInspection"));
-        Item weldingrods = new Item(text("weldingrods"), 1, text("weldingrodsInspection"));
+        Item weldingElectrodes = new Item(text("weldingElectrodes"), 1, text("weldingElectrodesInspection"));
         Item tape = new Item(text("tape"), 1,text("tapeInspection"));
         Item screwdriver = new Item(text("screwdriver"), 2, text("screwdriverInspection"));
         Item cables = new Item(text("cables"), 2, text("cablesInspection"));
         Item solarpanel = new Item(text("solarpanel"), 4, text("solarpanelInspection"));
 
         // variables of all repairable objects
-        RepairableObject leak = new RepairableObject(text("leak"), weldingrods, welder, text("leakInspection"));
+        RepairableObject leak = new RepairableObject(text("leak"), weldingElectrodes, welder, text("leakInspection"));
         RepairableObject brokenNavigationComputer = new RepairableObject(text("brokenNavigationComputer"), cables, screwdriver, text("brokenNavigationComputerInspection"));
         RepairableObject brokenSolarpanel = new RepairableObject((text("brokenSolarpanel")), solarpanel, screwdriver, text("brokenSolarplanelInspection"));
 
@@ -114,7 +114,7 @@ public class Game
 
         // sets items to their location
         descendModule.setItem(welder);
-        descendModule.setItem(weldingrods);
+        descendModule.setItem(weldingElectrodes);
         orbitalModule.setItem(tape);
         descendModule.setItem(screwdriver);
         outsideDescendModuleWest.setItem(cables);
@@ -329,18 +329,20 @@ public class Game
             return;
         }
         if (object.getDescription().equals(text("repairedNavigationComputer")) 
-            && serviceModuleEast.getObject(text("repairedSolarpanel")) != null){
-            System.out.println(text("deathCause3"));
-            System.exit(0);
-            }
-        if (object.getDescription().equals(text("repairedNavigationComputer")) 
             && serviceModuleEast.getObject(text("repairedSolarpanel")) != null
             && descendModule.getRepairableObject(text("leak")) == null){
             System.out.println(text("youWin"));
             System.out.println("quitGame");
             System.exit(0);
             return;
-        }        
+        }    
+        if (object.getDescription().equals(text("repairedNavigationComputer")) 
+            && serviceModuleEast.getObject(text("repairedSolarpanel")) != null){
+            System.out.println(text("deathCause3"));
+            System.exit(0);
+            return;
+            }
+            
     }
 
     //repairs repairables

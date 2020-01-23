@@ -66,7 +66,7 @@ public class LanguagePacks
         english.put("screwdriver", "screwdriver");
         english.put("cables", "cables");
         english.put("solarpanel", "solarpanel");
-        english.put("weldingrods", "welding-rods");
+        english.put("weldingElectrodes", "welding-electrodes");
         english.put("brokenSolarpanel", "broken-solarpanel");
         english.put("myself", "myself");
 
@@ -79,12 +79,12 @@ public class LanguagePacks
         english.put("brokenNavigationComputerInspection", "If I had a screwdriver and some cables i could fix this.");
         english.put("brokenSuitInspection", "I could probably repair this if i had some tape.");
         english.put("repairedSuitInspection", "Thats some fine craftman ship.");
-        english.put("welderInspection", "I could weld with this if i had some welding rods.");
+        english.put("welderInspection", "I could weld with this if i had some welding-electrodes.");
         english.put("tapeInspection", "I can probably repair my suit with this.");
         english.put("screwdriverInspection", "Its a screwdriver.");
         english.put("cablesInspection", "these are cables.");
         english.put("solarpanelInspection", "This shouldn't be floating around here.");
-        english.put("weldingrodsInspection", "I can weld with these if i had a welder.");
+        english.put("weldingElectrodesInspection", "I can weld with these if i had a welder.");
         english.put("brokenSolarpanelInspection", "This is proably the cause of my electricity problem, \n I could fix this if i had a solarpanel en a screwdriver.");
         english.put("descendModuleInspection", "Looks like viktor and yuri are dead.");
         english.put("orbitalModuleInspection", "its nice and spacious here.");
@@ -198,7 +198,7 @@ public class LanguagePacks
         dutch.put("brokenSuit",  "kapot-pak");
         dutch.put("repairedSuit",  "gerepareerd-pak");
         dutch.put("welder", "lasser");
-        dutch.put("weldingrods", "lasstafen");
+        dutch.put("weldingElectrodes", "las-electroden");
         dutch.put("tape", "tape");
         dutch.put("screwdriver", "schroevendraaier");
         dutch.put("cables", "kabels");
@@ -207,12 +207,13 @@ public class LanguagePacks
         dutch.put("myself", "mijzelf");
 
         //inspections in dutch
+        dutch.put("brokenSolarpanelInspection", "Als ik een schroevendraaier en een zonnenpaneel ad kan ik dit repareren");
         dutch.put("repairedSolarpanelInspection", "Ik zou nu stroom moeten hebben");
         dutch.put("repairedNavigationComputerInspection", "Dit zou moeten werken");
         dutch.put("yuriInspection", "Yuri is dood, mischien kan ik zijn pak gebruiken");
         dutch.put("viktorInspection", "viktor is dood, mischien kan ik zijn pak gebruiken");
         dutch.put("leakInspection", "lijkt er niet op dat er zuurstof ontsnapt,\n Ik zou dit kunnen maken als ik een lasser en lasstafen had.");
-        dutch.put("brokenNavigationComputerInspection", "Als Ik een schroevendraaier en cabels had kan ik dit repareren.");
+        dutch.put("brokenNavigationComputerInspection", "Als Ik een schroevendraaier en kabels had kan ik dit repareren.");
         dutch.put("brokenSuitInspection", "Ik zou dit kunnen repareren als ik tape had.");
         dutch.put("repairedSuitInspection", "Dat is nou vakmanschap.");
         dutch.put("welderInspection", "Ik kan hier mee lassen al ik lassatafen had.");
@@ -220,7 +221,7 @@ public class LanguagePacks
         dutch.put("screwdriverInspection", "dit is een schroevendraaier.");
         dutch.put("cablesInspection", "dit zijn kabels.");
         dutch.put("solarpanelInspection", "dit zou hier niet moeten zweven.");
-        dutch.put("weldingrodsInspection", "Ik kan hier mee lassen als ik een lasser had.");
+        dutch.put("weldingElectrodesInspection", "Ik kan hier mee lassen als ik een lasser had.");
         dutch.put("brokenSolarpanelInspection", "dit is waarschijnlijk de reden dat ik geen stroom heb, \nIk zou dit kunnen repareren als ik een zonnen-paneel en een schroeven draaier had.");
         dutch.put("descendModuleInspection", "Lijkt er op dat viktor en yuri dood zijn.");
         dutch.put("orbitalModuleInspection", "Ik heb hier veel ruimte.");
@@ -257,7 +258,7 @@ public class LanguagePacks
         dutch.put("noTool", "Ik heb niet et benodigde gereedschap in mijn inventaris.");
         dutch.put("cantGoBack", "Ik kan niet verder terug.");
         dutch.put("notBroken", "Dit is niet kapot.");
-        english.put("noElectricity", "mmh lijkt er op dat er geen stroom is.");
+        dutch.put("noElectricity", "mmh lijkt er op dat er geen stroom is.");
 
         //i did in dutch
         dutch.put("iDrop", " latenvallen");
@@ -273,7 +274,7 @@ public class LanguagePacks
         dutch.put("oxygen", "Zuurstof: ");
         dutch.put("repairables", "Te repareren: ");
         dutch.put("items", "Voorwerpen: ");
-        english.put("objects", "objecten: ");
+        dutch.put("objects", "objecten: ");
 
         //lose/win in dutch
         dutch.put("deathCause1", "je bent dood,\nje probeerde naar buiten te gaan terwel je een gat in je pak had.");

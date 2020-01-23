@@ -8,43 +8,42 @@ public class RepairableObject {
     private String inspection;
     private Object replaceObject;
 
-    public RepairableObject (String description, Item material, Item tool, String inspection )
-    {
+    public RepairableObject(String description, Item material, Item tool, String inspection) {
         this.description = description;
         this.material = material;
         this.tool = tool;
         this.inspection = inspection;
     }
 
-    public void setReplaceObject( Object object){
+    public void setReplaceObject(Object object) {
         this.replaceObject = object;
     }
 
-    public Object getReplaceObject(){
+    public Object getReplaceObject() {
         return replaceObject;
     }
 
-    public String getInspection(){
+    public String getInspection() {
         return inspection;
     }
 
-    public void setMaterial(Item material){
+    public void setMaterial(Item material) {
         this.material = material;
     }
 
-    public void setTool(Item tool){
+    public void setTool(Item tool) {
         this.tool = tool;
     }
 
-    public String getDescription(){
+    public String getDescription() {
         return description;
     }
 
-    public Item getMaterial(){
+    public Item getMaterial() {
         return material;
     }
 
-	public Item getTool() {
-		return tool;
-	}
+    public Item getTool() {
+        return tool;
+    }
 }

@@ -6,16 +6,16 @@ public class Object {
     String inspection;
     String description;
 
-    public Object(String description, String inspection){
+    public Object(String description, String inspection) {
         this.description = description;
         this.inspection = inspection;
     }
 
-    public String getInspection(){
+    public String getInspection() {
         return inspection;
     }
 
-    public String getDescription(){
+    public String getDescription() {
         return description;
     }
 }
