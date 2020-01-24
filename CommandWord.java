@@ -2,10 +2,9 @@
  * this is the game class this contains the entire game
  *
  * @author Douwe Klip
- * @version 08/01/2020
+ * @version 1.0
  */
 public enum CommandWord {
-    // A value for each command word along with its corresponding user interface
-    // string.
+    // all the possible commands
     GO, TAKE, DROP, QUIT, HELP, INVENTORY, MAP, REAPAIR, INSPECT, BACK, USE, UNKNOWN;
 }

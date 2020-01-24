@@ -1,9 +1,14 @@
 import java.util.HashMap;
 
-// this class contains all the translations for all the languages.
-
+/**
+ * this class contains all translations for the game
+ * 
+ * @author Douwe Klip
+ * @version 1.0
+ */
 public class LanguagePacks {
 
+    // fields
     HashMap<String, String> english = new HashMap<String, String>();
     HashMap<String, String> dutch = new HashMap<String, String>();
 
@@ -13,6 +18,10 @@ public class LanguagePacks {
     private static Language language = null;
 
     // constructor
+
+    /**
+     * initialises all the text for every language
+     */
     public LanguagePacks() {
         // english
         english.put("TEST", "English selected");
@@ -69,12 +78,12 @@ public class LanguagePacks {
         english.put("myself", "myself");
 
         // inspections in english
-        english.put("repairedSolarpanelInspection", "we should have power now");
+        english.put("repairedSolarpanelInspection", "We should have power now");
         english.put("repairedNavigationComputerInspection", "this should work now.");
         english.put("yuriInspection", "Yuri is dead, maybe i could take his suit");
         english.put("viktorInspection", "viktor is dead, maybe i could take his suit");
-        english.put("leakInspection",
-                "Doesn't look like oxygen is leaking though, \n I could probably fix it with some welding materials.");
+        english.put("leakInspection", "Doesn't look like oxygen is leaking though, "
+                + "\n I could probably fix it with some welding materials.");
         english.put("brokenNavigationComputerInspection", "If I had a screwdriver and some cables i could fix this.");
         english.put("brokenSuitInspection", "I could probably repair this if i had some tape.");
         english.put("repairedSuitInspection", "Thats some fine craftman ship.");
@@ -84,8 +93,8 @@ public class LanguagePacks {
         english.put("cablesInspection", "these are cables.");
         english.put("solarpanelInspection", "This shouldn't be floating around here.");
         english.put("weldingElectrodesInspection", "I can weld with these if i had a welder.");
-        english.put("brokenSolarpanelInspection",
-                "This is proably the cause of my electricity problem, \n I could fix this if i had a solarpanel en a screwdriver.");
+        english.put("brokenSolarpanelInspection", "This is proably the cause of my electricity problem, "
+                + "\n I could fix this if i had a solarpanel en a screwdriver.");
         english.put("descendModuleInspection", "Looks like viktor and yuri are dead.");
         english.put("orbitalModuleInspection", "its nice and spacious here.");
         english.put("outsideOrbitalModuleInspection", "It looks beautifull outside.");
@@ -96,14 +105,17 @@ public class LanguagePacks {
         english.put("myselfInspection", "I seem to be fine appart from my amnesia.");
 
         // welcome in english
-        english.put("welcome",
-                "You wake up in a soyuz spacecraft.\nYou don't remember anything.\nThe entire spacecraft is out of power.\nIt looks like the 2 people inside of the spacecraft are dead.\nYou should inspect youself to check if you are okay.\nTry and get the spacecraft operational again and return home.\nType 'help' if you need help.");
+        english.put("welcome", "You wake up in a soyuz spacecraft."
+                + "\nYou don't remember anything.\nThe entire spacecraft is out of power."
+                + "\nIt looks like the 2 people inside of the spacecraft are dead."
+                + "\nYou should inspect youself to check if you are okay."
+                + "\nTry and get the spacecraft operational again and return home.\nType 'help' if you need help.");
 
         // help in english
-        english.put("help1", "You have amnesia and you are in a soyuz spacecraft.");
-        english.put("help2", "Try and get the spacecraft operational again.");
-        english.put("help3", "Repair things that are broken and return home.");
-        english.put("help4", "Your command words are:");
+        english.put("help",
+                "You have amnesia and you are in a soyuz spacecraft."
+                        + "\nTry and get the spacecraft operational again."
+                        + "\nRepair things that are broken and return home.\n\nYour command words are:");
 
         // do what / gowhere in english
         english.put("dropWhat", "Drop what?");
@@ -181,13 +193,13 @@ public class LanguagePacks {
         dutch.put("north-west", "noordwest");
 
         // rooms in dutch
-        dutch.put("descendModule", "terugkeermodule");
-        dutch.put("orbitalModule", "ruimtemodule");
+        dutch.put("descendModule", "terugkeer-module");
+        dutch.put("orbitalModule", "ruimte-module");
         dutch.put("outsideOrbitalModule", "ruimtemodule-buiten");
-        dutch.put("outsideDescendModuleWest", "terugkeermodule-west");
-        dutch.put("outsideDescendModuleEast", "terugkeermodule-oost");
-        dutch.put("serviceModuleWest", "instrumentenmodule-west");
-        dutch.put("serviceModuleEast", "instrumentenmodule-oost");
+        dutch.put("outsideDescendModuleWest", "terugkeer-module-west");
+        dutch.put("outsideDescendModuleEast", "terugkeer-module-oost");
+        dutch.put("serviceModuleWest", "instrumenten-module-west");
+        dutch.put("serviceModuleEast", "instrumenten-module-oost");
 
         // items/objects in dutch
         dutch.put("yuri", "yuri");
@@ -226,8 +238,8 @@ public class LanguagePacks {
         dutch.put("cablesInspection", "dit zijn kabels.");
         dutch.put("solarpanelInspection", "dit zou hier niet moeten zweven.");
         dutch.put("weldingElectrodesInspection", "Ik kan hier mee lassen als ik een lasser had.");
-        dutch.put("brokenSolarpanelInspection",
-                "dit is waarschijnlijk de reden dat ik geen stroom heb, \nIk zou dit kunnen repareren als ik een zonnen-paneel en een schroeven draaier had.");
+        dutch.put("brokenSolarpanelInspection", "dit is waarschijnlijk de reden dat ik geen stroom heb, "
+                + "\nIk zou dit kunnen repareren als ik een zonnen-paneel en een schroeven draaier had.");
         dutch.put("descendModuleInspection", "Lijkt er op dat viktor en yuri dood zijn.");
         dutch.put("orbitalModuleInspection", "Ik heb hier veel ruimte.");
         dutch.put("outsideOrbitalModuleInspection", "het ziet er buiten mooi uit.");
@@ -238,14 +250,17 @@ public class LanguagePacks {
         dutch.put("myselfInspection", "alles is goed op mijn geheugenverlies naa.");
 
         // welcome in dutch
-        dutch.put("welcome",
-                "Je word wakker in een soyus ruimte voertuig.\nJe herrinert je niks meer.\n Het helevoertuig heeft geen stroom meer.\nhet lijkt er op dat de 2 mensen in het voertuig dood zijn.\nInspecteer jezelf om te kijken of alles goed is.\nProbeer het voetuig werkent te krijgen en ga terug naar huis.\nTiep 'hulp' als je hulp nodig hept.");
+        dutch.put("welcome", "Je word wakker in een soyus ruimte voertuig."
+                + "\nJe herrinert je niks meer.\n Het helevoertuig heeft geen stroom meer."
+                + "\nhet lijkt er op dat de 2 mensen in het voertuig dood zijn."
+                + "\nInspecteer jezelf om te kijken of alles goed is."
+                + "\nProbeer het voetuig werkent te krijgen en ga terug naar huis.\nTyp 'hulp' als je hulp nodig hept.");
 
         // help in dutch
-        dutch.put("help1", "Je hebt geheugenverlies en je bent in een soyuz ruimtevoertuig.");
-        dutch.put("help2", "Probeer het voertuig weer werkende te krijgen.");
-        dutch.put("help3", "Repareer dingen die kapot zijn en ga terug naar huis.");
-        dutch.put("help4", "Je commando worden zijn:");
+        dutch.put("help",
+                "Je hebt geheugenverlies en je bent in een soyuz ruimtevoertuig."
+                        + "\nProbeer het voertuig weer werkende te krijgen."
+                        + "\nRepareer dingen die kapot zijn en ga terug naar huis.\n \nJe commando woorden zijn:");
 
         // do what / gowhere in dutch
         dutch.put("dropWhat", "Laat wat vallen?");
@@ -286,7 +301,8 @@ public class LanguagePacks {
         dutch.put("deathCause1", "je bent dood,\nje probeerde naar buiten te gaan terwel je een gat in je pak had.");
         dutch.put("deathCause2", "je bent dood, \nje had geen zuurstof meer");
         dutch.put("deathCause3",
-                "je bent dood, \nJe probeerde terug te keren maar je was opgebrand tijdens de terugkering \n Je bent vergeten iets belangerijks te repareren.");
+                "je bent dood, \nJe probeerde terug te keren maar je was opgebrand tijdens de terugkering "
+                        + "\n Je bent vergeten iets belangerijks te repareren.");
         dutch.put("youWin", "je bent veilig terug gekeerd naar huis.");
 
         // quit in dutch
@@ -297,14 +313,31 @@ public class LanguagePacks {
 
     }
 
+    /**
+     * set a new language
+     * 
+     * @param newLanguage the given new language
+     */
     public static void setlanguage(Language newLanguage) {
         language = newLanguage;
     }
 
+    /**
+     * get the language
+     * 
+     * @return returns the selected language
+     */
     public Language getlanguage() {
         return language;
     }
 
+    /**
+     * gets text from a language
+     * 
+     * @param key this is the key wich is used to get a specific String from the
+     *            selected language
+     * @return returns specific string in the selected language
+     */
     public String getText(String key) {
         switch (language) {
         case DUTCH:
@@ -319,6 +352,11 @@ public class LanguagePacks {
         }
     }
 
+    /**
+     * gets vallid commands depending on selected language
+     * 
+     * @return ruturns the valid command words
+     */
     public static HashMap<String, CommandWord> getVallidCommands() {
         switch (language) {
         case DUTCH:

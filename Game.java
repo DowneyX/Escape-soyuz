@@ -1,8 +1,15 @@
 import java.util.Scanner;
 
-//this clas is responsible for initializing the entire game
+/**
+ * this clas is responsible for initializing the entire game
+ * 
+ * @author DouweKlip
+ * @version 1.0
+ */
 
 public class Game {
+
+    // fields
     private Parser parser;
     private Player player;
     private LanguagePacks lang;
@@ -10,14 +17,22 @@ public class Game {
             serviceModuleWest, serviceModuleEast;
     Scanner reader = new Scanner(System.in);
 
-    // initialises the players the parser and languagepack
+    // constructor
+
+    /**
+     * initialises the players the parser and languagepack
+     */
     public Game() {
         parser = new Parser();
         player = new Player();
         lang = new LanguagePacks();
     }
 
-    // starts the game.
+    // methods
+
+    /**
+     * plays the start up routine
+     */
     public void play() {
         selectLanguage();
         createRooms();
@@ -35,7 +50,9 @@ public class Game {
         System.out.println(text("quitGame"));
     }
 
-    // selects a language depending on what language you selected
+    /**
+     * selects a language based on what you typed
+     */
     private void selectLanguage() {
         System.out.println("please select a language");
         System.out.println("selecteer een taal A.u.b");
@@ -57,7 +74,9 @@ public class Game {
         }
     }
 
-    // initialises items objects and suits
+    /**
+     * generates the whole games and starts the player in descend module when done
+     */
     public void createRooms() {
 
         // create the rooms
@@ -144,7 +163,11 @@ public class Game {
         player.addRoomHistory();
     }
 
-    // prosseses a given command
+    /**
+     * @param command this is the parsed command that the player typed
+     * @return returns true or false if true it will set finished to true and end
+     *         the game
+     */
     public boolean processCommand(Command command) {
         boolean wantToQuit = false;
 
@@ -201,7 +224,9 @@ public class Game {
         return wantToQuit;
     }
 
-    // prints a map of the game plus where the player is at that moment
+    /**
+     * prints a map of the game plus where the player is at that moment
+     */
     public void printMap() {
         String noPlayer = "     ";
         String playerHere = " <○> ";
@@ -253,7 +278,9 @@ public class Game {
         System.out.println("             " + smw + "   " + sme);
     }
 
-    // prints a opening message for the player
+    /**
+     * prints a welcome message
+     */
     public void printWelcome() {
         System.out.println(text("TEST"));
         System.out.println();
@@ -264,7 +291,10 @@ public class Game {
         System.out.println(text("exit") + player.getCurrentRoom().getRoomExit());
     }
 
-    // inspect
+    /**
+     * 
+     * @param command this contains the parsed command the player typed
+     */
     public void inspect(Command command) {
         if (!command.hasSecondWord()) {
             // if there is no second word, we don't know what to inspect
@@ -279,6 +309,8 @@ public class Game {
         RepairableObject repairableObject = currentroom.getRepairableObject(secondWord);
         Object object = currentroom.getObject(secondWord);
 
+        // if the second word is equal to cuurenRoom description.
+        // it wil give all information about the room
         if (secondWord.equals(currentroom.getShortDescription())) {
             System.out.println(text("iAmAt") + currentroom.getShortDescription());
             System.out.println(currentroom.getInpection());
@@ -289,32 +321,44 @@ public class Game {
 
             return;
         }
+        // if there is an object print the objects inspection
         if (object != null) {
             System.out.println(object.getInspection());
             return;
         }
+        // if there is a Repairableobject print the Repairableobjects inspection
         if (repairableObject != null) {
             System.out.println(repairableObject.getInspection());
             return;
         }
+        // if there is an item print the item's inspection
         if (item != null) {
             System.out.println(item.getInspection());
             System.out.println(text("space") + "[" + item.getVolume() + "]");
             return;
         }
+        // if secondWord is equal to "myself" print myself inspection
         if (secondWord.equals(text("myself"))) {
             System.out.println(text("myselfInspection"));
             return;
         }
+        // if secondWord is equal to currentSuits description
+        // prin suit inspection
         if (secondWord.equals(currentSuit.getDescription())) {
             System.out.println(currentSuit.getInspection());
             return;
-        } else {
+        }
+        // if all fails print "cantFind" message
+        else {
             System.out.println(text("cantFind"));
         }
     }
 
-    // uses speific objects
+    /**
+     * uses specific objects
+     * 
+     * @param command this is the parsed command that the player typed
+     */
     public void use(Command command) {
         if (!command.hasSecondWord()) {
             // if there is no second word, we don't know what to use
@@ -325,15 +369,13 @@ public class Game {
         String secondWord = command.getSecondWord();
         Object object = player.getCurrentRoom().getObject(secondWord);
 
+        // if we cant find the object print "cantFind" message
         if (object == null) {
             System.out.println(text("cantFind"));
             return;
         }
-        if (object.getDescription().equals(text("repairedNavigationComputer"))
-                && serviceModuleEast.getObject(text("repairedSolarpanel")) == null) {
-            System.out.println(text("noElectricity"));
-            return;
-        }
+
+        // checks if the win condition is true
         if (object.getDescription().equals(text("repairedNavigationComputer"))
                 && serviceModuleEast.getObject(text("repairedSolarpanel")) != null
                 && descendModule.getRepairableObject(text("leak")) == null) {
@@ -342,6 +384,15 @@ public class Game {
             System.exit(0);
             return;
         }
+
+        // checks if you have repaired the solarpannel
+        if (object.getDescription().equals(text("repairedNavigationComputer"))
+                && serviceModuleEast.getObject(text("repairedSolarpanel")) == null) {
+            System.out.println(text("noElectricity"));
+            return;
+        }
+
+        // checks if you have repaired the leak if not you die
         if (object.getDescription().equals(text("repairedNavigationComputer"))
                 && serviceModuleEast.getObject(text("repairedSolarpanel")) != null) {
             System.out.println(text("deathCause3"));
@@ -351,10 +402,14 @@ public class Game {
 
     }
 
-    // repairs repairables
+    /**
+     * repairs reparableObjects or suits
+     * 
+     * @param command this is the parsed command that the player typed
+     */
     public void repair(Command command) {
+        // if there is no second word, we don't know what to rapiar
         if (!command.hasSecondWord()) {
-            // if there is no second word, we don't know what to rapiar
             System.out.println(text("repairWhat"));
             return;
         }
@@ -363,16 +418,24 @@ public class Game {
         Suit suit = player.getCurrentSuit();
         RepairableObject repairableObject = player.getCurrentRoom().getRepairableObject(secondWord);
 
+        // checks if you typed to repair your own suit
         if (suit.getDescription().equals(secondWord)) {
             Item material = player.getCurrentSuit().getMaterial();
 
+            // if the suit is airtight its not broken
             if (player.getCurrentSuit().getAitight() == true) {
                 System.out.println(text("notBroken"));
                 return;
-            } else if (player.getItem(material.getDescription()) == null) {
+            }
+
+            // checks if you have the right material to repair the suit
+            if (player.getItem(material.getDescription()) == null) {
                 System.out.println(text("noMaterial"));
                 return;
-            } else {
+            }
+
+            // this will repair the suit
+            else {
                 player.removeItem(player.getCurrentSuit().getMaterial().getDescription());
                 player.setCurrentSuit(new Suit(text("repairedSuit"), true, text("repairedSuitInspection"), 7));
                 System.out.println(secondWord + text("iRepair"));
@@ -406,7 +469,9 @@ public class Game {
         return;
     }
 
-    // prints all the items that are in the players inventory
+    /**
+     * prints everything that is in the player his inventory
+     */
     public void printInventory() {
         System.out.println(text("iWear") + player.getCurrentSuit().getDescription());
         System.out.println(text("iCarry"));
@@ -415,17 +480,20 @@ public class Game {
 
     }
 
-    // prints a help message with all the commandwords
+    /**
+     * prints a message with all command words
+     */
     public void printHelp() {
-        System.out.println(text("help1"));
-        System.out.println(text("help2"));
-        System.out.println(text("help3"));
-        System.out.println();
-        System.out.println(text("help4"));
+        System.out.println(text("help"));
+
         parser.showCommands();
     }
 
-    // drops a given item
+    /**
+     * drops an item to current room
+     * 
+     * @param command this is the parsed command that the player typed
+     */
     public void dropItem(Command command) {
         if (!command.hasSecondWord()) {
             // if there is no second word, we don't know what to drop.
@@ -434,19 +502,26 @@ public class Game {
         }
 
         String item = command.getSecondWord();
-        Item newitem = player.getItem(item);
+        Item dropItem = player.getItem(item);
 
-        // try to drop item
-        if (newitem == null) {
+        // if drop item is equal to null then we cant find the item to drop
+        if (dropItem == null) {
             System.out.println(text("cantFind"));
-        } else {
+        }
+
+        // drops the item to current room
+        else {
             player.removeItem(item);
-            player.getCurrentRoom().setItem(newitem);
+            player.getCurrentRoom().setItem(dropItem);
             System.out.println(item + text("iDrop"));
         }
     }
 
-    // takes a given item
+    /**
+     * this takes an item that is in the current room
+     * 
+     * @param command this is the parsed command that the player typed
+     */
     public void takeItem(Command command) {
         if (!command.hasSecondWord()) {
             // if there is no second word, we don't know what to take.
@@ -458,6 +533,7 @@ public class Game {
         String item = command.getSecondWord();
         Item newitem = player.getCurrentRoom().getItem(item);
 
+        // if newitem is equal to null then we cant find it
         if (newitem == null) {
             System.out.println(text("cantFind"));
             return;
@@ -466,6 +542,8 @@ public class Game {
         // calculates the volume of of the inventory + the volume of the item
         int totalVolume = newitem.getVolume() + player.getInventorySpace();
 
+        // if the total volume is higher then the inventory volume
+        // then there is no space
         if (totalVolume > player.getInventoryVolume()) {
             System.out.println(text("noSpace"));
         } else {
@@ -475,35 +553,47 @@ public class Game {
         }
     }
 
-    // player goes to the room with the given direction
+    /**
+     * moves a player to the room in given direction
+     * 
+     * @param command this is the parsed command that the player typed
+     */
     public void goRoom(Command command) {
         if (!command.hasSecondWord()) {
-            // if there is no second word, we don't know where to go...
+            // if there is no second word, we don't know where to go
             System.out.println(text("goWhere"));
             return;
         }
 
         String direction = command.getSecondWord();
-
-        // Try to leave current room.
         Room nextRoom = player.getCurrentRoom().getExit(direction);
 
+        // if nextroom is null then we cant go there
         if (nextRoom == null) {
             System.out.println(text("cantGo"));
-        } else {
+        }
+
+        // else it will set player to next room
+        else {
             player.setCurrentRoom(nextRoom);
+
+            // if the room doesn't have oxygen it will lower the players oxygen
             if (!player.getCurrentRoom().getOxygen()) {
                 player.getCurrentSuit().loweroxygen();
-                ;
+
+                // if the players suit is not airtight the player wil die
                 if (!player.getCurrentSuit().getAitight()) {
                     System.out.println(text("deathCause1"));
                     System.exit(0);
                 }
             }
+
+            // if the room does have oxgygen it will refil the players oxygen
             if (player.getCurrentRoom().getOxygen()) {
                 player.getCurrentSuit().refilOxygen();
             }
 
+            // if the player his oxygen is 0 the player wil die
             if (player.getCurrentSuit().getSuitOxygen() == 0) {
                 System.out.println(text("deathCause2"));
                 System.exit(0);
@@ -515,21 +605,34 @@ public class Game {
         }
     }
 
-    // player goes back from where they came
+    /**
+     * this will let the player go back to a previous room
+     */
     public void goback() {
+
+        // if you have been to les then 2 rooms you can't go back
         if (player.getRoomHistory().size() < 2) {
             System.out.println(text("cantGoBack"));
             return;
-        } else {
+        }
+
+        // if you have been to more then 1 room then it will set the currentroom to
+        // previousroom
+        else {
             Room previousRoom = player.getRoomHistory().get(player.getRoomHistory().size() - 2);
             player.setCurrentRoom(previousRoom);
+
+            // if the room doesn't have oxygen it will lower the players oxygen
             if (!player.getCurrentRoom().getOxygen()) {
                 player.getCurrentSuit().loweroxygen();
-                ;
             }
+
+            // if the room does have oxgygen it will refil the players oxygen
             if (player.getCurrentRoom().getOxygen()) {
                 player.getCurrentSuit().refilOxygen();
             }
+
+            // if the player his oxygen is 0 the player wil die
             if (player.getCurrentSuit().getSuitOxygen() == 0) {
                 System.out.println(text("deathCause2"));
                 System.exit(0);
@@ -541,13 +644,24 @@ public class Game {
         }
     }
 
+    /**
+     * 
+     * @param text this is the key to get a String from languagepack
+     * @return returns the String form languagepack
+     */
     public String text(String text) {
         String output;
         output = lang.getText(text);
         return output;
     }
 
-    // checks if you want to quit the game and then quits the game
+    /**
+     * checks if you want to quit the game and then quits the game
+     * 
+     * @param command this is the parsed command that the player typed
+     * @return returns true or false depending on if the player wrote the command
+     *         right
+     */
     public boolean quit(Command command) {
         if (command.hasSecondWord()) {
             System.out.println(text("quitWhat"));

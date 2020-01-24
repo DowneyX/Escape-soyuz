@@ -1,13 +1,15 @@
 import java.util.HashMap;
 
 /**
- * this is the game class this contains the entire game
+ * this class is responsible for cecking vallid commands
  *
  * @author Douwe Klip
- * @version 08/01/2020
+ * @version 1.0
  */
 
 public class CommandWords {
+    // methods
+
     /**
      * Find the CommandWord associated with a command word.
      * 

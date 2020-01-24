@@ -1,8 +1,8 @@
 /**
  * Write a description of class Language here.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Douwe Klip
+ * @version 1.0
  */
 public enum Language {
     DUTCH, ENGLISH;

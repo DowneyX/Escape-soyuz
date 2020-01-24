@@ -4,7 +4,7 @@ import java.util.Scanner;
  * this is the game class this contains the entire game
  *
  * @author Douwe Klip
- * @version 08/01/2020
+ * @version 1.0
  */
 public class Parser {
     private CommandWords commands; // holds all valid command words
