@@ -112,9 +112,9 @@ public class Game {
                 text("repairedNavigationComputerInspection"));
 
         // variables of suits
-        Suit brokenSuit = new Suit(text("brokenSuit"), false, text("brokenSuitInspection"));
-        Suit victorSuit = new Suit(text("viktorSuit"), false, text("viktorSuitInspection"));
-        Suit yuriSuit = new Suit(text("yuriSuit"), false, text("yuriSuitInspection"));
+        Suit brokenSuit = new Suit(text("brokenSuit"), false, text("brokenSuitInspection"), 1);
+        Suit victorSuit = new Suit(text("viktorSuit"), false, text("viktorSuitInspection"), 8);
+        Suit yuriSuit = new Suit(text("yuriSuit"), false, text("yuriSuitInspection"), 8);
 
         // sets items to their location
         descendModule.setItem(welder);
@@ -138,10 +138,10 @@ public class Game {
         brokenNavigationComputer.setReplaceObject(repairedNanvigationComputer);
 
         // start game inside decent module
-        player.currentsuit = brokenSuit;
-        player.currentsuit.setMaterial(tape);
-        player.currentRoom = descendModule;
-        player.roomHistory.add(player.currentRoom);
+        player.setCurrentSuit(brokenSuit);
+        player.getCurrentSuit().setMaterial(tape);
+        player.setCurrentRoom(descendModule);
+        player.addRoomHistory();
     }
 
     // prosseses a given command
@@ -214,25 +214,25 @@ public class Game {
         String smw = noPlayer;
         String sme = noPlayer;
 
-        if (player.currentRoom == descendModule) {
+        if (player.getCurrentRoom() == descendModule) {
             dcm = playerHere;
         }
-        if (player.currentRoom == orbitalModule) {
+        if (player.getCurrentRoom() == orbitalModule) {
             omm = playerHere;
         }
-        if (player.currentRoom == outsideOrbitalModule) {
+        if (player.getCurrentRoom() == outsideOrbitalModule) {
             oom = playerHere;
         }
-        if (player.currentRoom == outsideDescendModuleWest) {
+        if (player.getCurrentRoom() == outsideDescendModuleWest) {
             odw = playerHere;
         }
-        if (player.currentRoom == outsideDescendModuleEast) {
+        if (player.getCurrentRoom() == outsideDescendModuleEast) {
             ode = playerHere;
         }
-        if (player.currentRoom == serviceModuleWest) {
+        if (player.getCurrentRoom() == serviceModuleWest) {
             smw = playerHere;
         }
-        if (player.currentRoom == serviceModuleEast) {
+        if (player.getCurrentRoom() == serviceModuleEast) {
             sme = playerHere;
         }
         System.out.println();
@@ -259,9 +259,9 @@ public class Game {
         System.out.println();
         System.out.println(text("welcome"));
         System.out.println();
-        System.out.println(text("oxygen") + "[" + player.Suitoxygen + "]");
-        System.out.println(text("iAmAt") + player.currentRoom.getShortDescription());
-        System.out.println(text("exit") + player.currentRoom.getRoomExit());
+        System.out.println(text("oxygen") + "[" + player.getCurrentSuit().getSuitOxygen() + "]");
+        System.out.println(text("iAmAt") + player.getCurrentRoom().getShortDescription());
+        System.out.println(text("exit") + player.getCurrentRoom().getRoomExit());
     }
 
     // inspect
@@ -273,19 +273,19 @@ public class Game {
         }
 
         String secondWord = command.getSecondWord();
-        Room currentRoom = player.currentRoom;
-        Suit currentSuit = player.currentsuit;
-        Item item = currentRoom.getItem(secondWord);
-        RepairableObject repairableObject = currentRoom.getRepairableObject(secondWord);
-        Object object = currentRoom.getObject(secondWord);
+        Room currentroom = player.getCurrentRoom();
+        Suit currentSuit = player.getCurrentSuit();
+        Item item = currentroom.getItem(secondWord);
+        RepairableObject repairableObject = currentroom.getRepairableObject(secondWord);
+        Object object = currentroom.getObject(secondWord);
 
-        if (secondWord.equals(currentRoom.getShortDescription())) {
-            System.out.println(text("iAmAt") + currentRoom.getShortDescription());
-            System.out.println(currentRoom.getInpection());
-            System.out.println(text("objects") + currentRoom.getRoomObjects());
-            System.out.println(text("items") + currentRoom.getRoomItems());
-            System.out.println(text("repairables") + currentRoom.getRoomRepairableObjects());
-            System.out.println(text("oxygen") + currentRoom.getOxygen());
+        if (secondWord.equals(currentroom.getShortDescription())) {
+            System.out.println(text("iAmAt") + currentroom.getShortDescription());
+            System.out.println(currentroom.getInpection());
+            System.out.println(text("objects") + currentroom.getRoomObjects());
+            System.out.println(text("items") + currentroom.getRoomItems());
+            System.out.println(text("repairables") + currentroom.getRoomRepairableObjects());
+            System.out.println(text("oxygen") + currentroom.getOxygen());
 
             return;
         }
@@ -323,7 +323,7 @@ public class Game {
         }
 
         String secondWord = command.getSecondWord();
-        Object object = player.currentRoom.getObject(secondWord);
+        Object object = player.getCurrentRoom().getObject(secondWord);
 
         if (object == null) {
             System.out.println(text("cantFind"));
@@ -360,21 +360,21 @@ public class Game {
         }
 
         String secondWord = command.getSecondWord();
-        Suit suit = player.currentsuit;
-        RepairableObject repairableObject = player.currentRoom.getRepairableObject(secondWord);
+        Suit suit = player.getCurrentSuit();
+        RepairableObject repairableObject = player.getCurrentRoom().getRepairableObject(secondWord);
 
         if (suit.getDescription().equals(secondWord)) {
-            Item material = player.currentsuit.getMaterial();
+            Item material = player.getCurrentSuit().getMaterial();
 
-            if (player.currentsuit.getAitight() == true) {
+            if (player.getCurrentSuit().getAitight() == true) {
                 System.out.println(text("notBroken"));
                 return;
             } else if (player.getItem(material.getDescription()) == null) {
                 System.out.println(text("noMaterial"));
                 return;
             } else {
-                player.removeItem(player.currentsuit.getMaterial().getDescription());
-                player.currentsuit = new Suit(text("repairedSuit"), true, text("repairedSuitInspection"));
+                player.removeItem(player.getCurrentSuit().getMaterial().getDescription());
+                player.setCurrentSuit(new Suit(text("repairedSuit"), true, text("repairedSuitInspection"), 7));
                 System.out.println(secondWord + text("iRepair"));
                 return;
             }
@@ -394,10 +394,10 @@ public class Game {
                 return;
             } else {
                 if (replaceObject != null) {
-                    player.currentRoom.setObject(replaceObject);
+                    player.getCurrentRoom().setObject(replaceObject);
                 }
                 player.removeItem(material.getDescription());
-                player.currentRoom.removeRepairableObject(secondWord);
+                player.getCurrentRoom().removeRepairableObject(secondWord);
                 System.out.println(secondWord + text("iRepair"));
                 return;
             }
@@ -408,10 +408,10 @@ public class Game {
 
     // prints all the items that are in the players inventory
     public void printInventory() {
-        System.out.println(text("iWear") + player.currentsuit.getDescription());
+        System.out.println(text("iWear") + player.getCurrentSuit().getDescription());
         System.out.println(text("iCarry"));
         System.out.println(player.GetInventoryItems());
-        System.out.println(text("spaceLeft") + "[" + (player.inventoryVolume - player.getInventoryVolume()) + "]");
+        System.out.println(text("spaceLeft") + "[" + (player.getInventoryVolume() - player.getInventorySpace()) + "]");
 
     }
 
@@ -441,7 +441,7 @@ public class Game {
             System.out.println(text("cantFind"));
         } else {
             player.removeItem(item);
-            player.currentRoom.setItem(newitem);
+            player.getCurrentRoom().setItem(newitem);
             System.out.println(item + text("iDrop"));
         }
     }
@@ -456,7 +456,7 @@ public class Game {
 
         // gets the item from the room.
         String item = command.getSecondWord();
-        Item newitem = player.currentRoom.getItem(item);
+        Item newitem = player.getCurrentRoom().getItem(item);
 
         if (newitem == null) {
             System.out.println(text("cantFind"));
@@ -464,13 +464,13 @@ public class Game {
         }
 
         // calculates the volume of of the inventory + the volume of the item
-        int totalVolume = newitem.getVolume() + player.getInventoryVolume();
+        int totalVolume = newitem.getVolume() + player.getInventorySpace();
 
-        if (totalVolume > player.inventoryVolume) {
+        if (totalVolume > player.getInventoryVolume()) {
             System.out.println(text("noSpace"));
         } else {
-            player.inventory.put(item, newitem);
-            player.currentRoom.removeItem(item);
+            player.putInInventory(newitem);
+            player.getCurrentRoom().removeItem(item);
             System.out.println(item + text("iTake"));
         }
     }
@@ -486,56 +486,58 @@ public class Game {
         String direction = command.getSecondWord();
 
         // Try to leave current room.
-        Room nextRoom = player.currentRoom.getExit(direction);
+        Room nextRoom = player.getCurrentRoom().getExit(direction);
 
         if (nextRoom == null) {
             System.out.println(text("cantGo"));
         } else {
-            player.currentRoom = nextRoom;
-            if (!player.currentRoom.getOxygen()) {
-                player.Suitoxygen--;
-                if (!player.currentsuit.getAitight()) {
+            player.setCurrentRoom(nextRoom);
+            if (!player.getCurrentRoom().getOxygen()) {
+                player.getCurrentSuit().loweroxygen();
+                ;
+                if (!player.getCurrentSuit().getAitight()) {
                     System.out.println(text("deathCause1"));
                     System.exit(0);
                 }
             }
-            if (player.currentRoom.getOxygen()) {
-                player.Suitoxygen = 7;
+            if (player.getCurrentRoom().getOxygen()) {
+                player.getCurrentSuit().refilOxygen();
             }
 
-            if (player.Suitoxygen == 0) {
+            if (player.getCurrentSuit().getSuitOxygen() == 0) {
                 System.out.println(text("deathCause2"));
                 System.exit(0);
             }
-            player.roomHistory.add(player.currentRoom);
-            System.out.println(text("oxygen") + "[" + player.Suitoxygen + "]");
-            System.out.println(text("iAmAt") + player.currentRoom.getShortDescription());
-            System.out.println(text("exit") + player.currentRoom.getRoomExit());
+            player.addRoomHistory();
+            System.out.println(text("oxygen") + "[" + player.getCurrentSuit().getSuitOxygen() + "]");
+            System.out.println(text("iAmAt") + player.getCurrentRoom().getShortDescription());
+            System.out.println(text("exit") + player.getCurrentRoom().getRoomExit());
         }
     }
 
     // player goes back from where they came
     public void goback() {
-        if (player.roomHistory.size() < 2) {
+        if (player.getRoomHistory().size() < 2) {
             System.out.println(text("cantGoBack"));
             return;
         } else {
-            Room previousRoom = player.roomHistory.get(player.roomHistory.size() - 2);
-            player.currentRoom = previousRoom;
-            if (!player.currentRoom.getOxygen()) {
-                player.Suitoxygen--;
+            Room previousRoom = player.getRoomHistory().get(player.getRoomHistory().size() - 2);
+            player.setCurrentRoom(previousRoom);
+            if (!player.getCurrentRoom().getOxygen()) {
+                player.getCurrentSuit().loweroxygen();
+                ;
             }
-            if (player.currentRoom.getOxygen()) {
-                player.Suitoxygen = 7;
+            if (player.getCurrentRoom().getOxygen()) {
+                player.getCurrentSuit().refilOxygen();
             }
-            if (player.Suitoxygen == 0) {
+            if (player.getCurrentSuit().getSuitOxygen() == 0) {
                 System.out.println(text("deathCause2"));
                 System.exit(0);
             }
-            player.roomHistory.remove(player.roomHistory.size() - 1);
-            System.out.println(text("oxygen") + "[" + player.Suitoxygen + "]");
-            System.out.println(text("iAmAt") + player.currentRoom.getShortDescription());
-            System.out.println(text("exit") + player.currentRoom.getRoomExit());
+            player.getRoomHistory().remove(player.getRoomHistory().size() - 1);
+            System.out.println(text("oxygen") + "[" + player.getCurrentSuit().getSuitOxygen() + "]");
+            System.out.println(text("iAmAt") + player.getCurrentRoom().getShortDescription());
+            System.out.println(text("exit") + player.getCurrentRoom().getRoomExit());
         }
     }
 

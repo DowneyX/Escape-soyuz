@@ -4,20 +4,43 @@ import java.util.HashMap;
 //this class stores and returns all information about the player
 
 public class Player {
-    public int Suitoxygen = 7;
-    public Suit currentsuit = null;
-    public HashMap<String, Item> inventory = new HashMap<String, Item>();
-    public Room currentRoom;
-    public ArrayList<Room> roomHistory = new ArrayList<Room>();
-    public int inventoryVolume = 6;
+    private Suit currentSuit = null;
+    private HashMap<String, Item> inventory = new HashMap<String, Item>();
+    private Room currentRoom;
+    private ArrayList<Room> roomHistory = new ArrayList<Room>();
+    private int inventoryVolume = 6;
 
     // methods
+    public void addRoomHistory() {
+        roomHistory.add(currentRoom);
+    }
+
     public int getInventoryVolume() {
+        return inventoryVolume;
+    }
+
+    public void putInInventory(Item item) {
+        inventory.put(item.getDescription(), item);
+    }
+
+    public ArrayList<Room> getRoomHistory() {
+        return roomHistory;
+    }
+
+    public int getInventorySpace() {
         int totalvolume = 0;
         for (String key : inventory.keySet()) {
             totalvolume += inventory.get(key).getVolume();
         }
         return totalvolume;
+    }
+
+    public void setCurrentRoom(Room newRoom) {
+        currentRoom = newRoom;
+    }
+
+    public void setCurrentSuit(Suit newSuit) {
+        currentSuit = newSuit;
     }
 
     // removes an item
@@ -40,11 +63,19 @@ public class Player {
     }
 
     public Suit getSuit(String secondword) {
-        String des = currentsuit.getDescription();
+        String des = currentSuit.getDescription();
         if (des == secondword) {
-            return currentsuit;
+            return currentSuit;
         } else {
             return null;
         }
+    }
+
+    public Room getCurrentRoom() {
+        return currentRoom;
+    }
+
+    public Suit getCurrentSuit() {
+        return currentSuit;
     }
 }
